@@ -1,0 +1,12 @@
+Para importar projetos no Eclipse, use o comando:
+    File->Import->Projects from Folder or Archive; ou
+    File->Import->Projects from Git.
+
+Atenção! No curso foi utilizada a versão 9 do tomcat.
+
+    A partir da versão 10 do tomcat foram efetuadas mudanças em sua 
+    arquitetura, que impossibilitam o import de classes/interfaces do 
+    pacote javax.*.
+
+    Com isso, recomendamos que seja utilizada a versão 9 do tomcat, para 
+    evitar problemas ao longo do curso.
