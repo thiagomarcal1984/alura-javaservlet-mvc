@@ -10,3 +10,24 @@ Atenção! No curso foi utilizada a versão 9 do tomcat.
 
     Com isso, recomendamos que seja utilizada a versão 9 do tomcat, para 
     evitar problemas ao longo do curso.
+
+Comandos no Windows para ver as portas abertas e os programas associados:
+    Mostrar a lista de tarefas: 
+        D:\>tasklist | findstr cmd
+
+    Mostrar se a porta 8008 está em uso:
+        netstat -abno | findstr 8080
+            -a => Mostra todas as conexões e portas.
+            -b => Mostra o executável envolvido na criação da conexão.
+            -n => Exibe endereços e números de porta no formato numérico.
+                Útil pra mostrar o IP ao invés do nome do host. E também
+                evita de travar o terminal.
+            -o => Exibe a ID de processo proprietário associado a cada conexão.
+
+Ctrl + Shift + O => Comando no Eclipse para automatizar importação de pacotes.
+
+Problemas de definição do JRE (a classe System não é localizada, por exemplo):
+    Propriedades do Projeto -> Java Build Path -> Aba Libraries. 
+        Lá você adapta a JRE que vai ser usada.
+    Propriedades do Projeto -> Project Facets.
+        Escolha a configuração apropriada para usar o Tomcat.
