@@ -25,9 +25,28 @@ Comandos no Windows para ver as portas abertas e os programas associados:
             -o => Exibe a ID de processo proprietário associado a cada conexão.
 
 Ctrl + Shift + O => Comando no Eclipse para automatizar importação de pacotes.
+Ctrl + M => Maximiza/Restaura a aba atual.
+Ctrl + Shift + R => Janela para buscar algum recurso (arquivo)
 
 Problemas de definição do JRE (a classe System não é localizada, por exemplo):
     Propriedades do Projeto -> Java Build Path -> Aba Libraries. 
         Lá você adapta a JRE que vai ser usada.
     Propriedades do Projeto -> Project Facets.
         Escolha a configuração apropriada para usar o Tomcat.
+
+O objetivo foi substituir vários servlets por um único servlet que recebe as
+requisições e as redireciona para classes específicas. (Mas por que criar 
+classes que não estendem servlets, já que o método executa seria o mesmo
+que service, doPost, doGet etc?)
+
+Ao definir os links para os formulários .jsp, não coloque os parâmetros da
+querystring na action do form. Ao invés disso, use campos ocultos com os 
+parâmetros da querystring.
+
+Até agora há 3 pacotes no curso:
+    * Modelo
+    * Servlet
+    * Ações
+
+Os dois últimos (Servlet e Ações) fazem parte da camada Controller. O servlet
+único redireciona as requisições para as ações correspondentes.
