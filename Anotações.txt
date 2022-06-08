@@ -27,6 +27,7 @@ Comandos no Windows para ver as portas abertas e os programas associados:
 Ctrl + Shift + O => Comando no Eclipse para automatizar importação de pacotes.
 Ctrl + M => Maximiza/Restaura a aba atual.
 Ctrl + Shift + R => Janela para buscar algum recurso (arquivo)
+Alt + Shift + Z => Atalho para "Surround with" em um bloco. Ajuda no try/catch.
 
 Problemas de definição do JRE (a classe System não é localizada, por exemplo):
     Propriedades do Projeto -> Java Build Path -> Aba Libraries. 
@@ -60,3 +61,13 @@ dos dois comportamentos será a Entrada Única dos servlets.
 Preocupação: NUNCA mencionar diretamente qual JSP será carregado. Um meio de 
 evitar que o navegador acesse os JSP diretamente é move-los para a pasta
 WEB-INF (ela nunca fica acessível pelo navegador).
+
+Para flexibilizar a instanciação do controlador, podemos usar a reflexão Java.
+Graças às reflections, podemos instanciar dinamicamente as classes com:
+    1) Definir uma interface comum para as ações (vamos chamar de Acao);
+    2) Reflection: Class classe = Class.forName("caminho.do.pack.NomeClasse");
+    3) Instanciação: Acao acao = (Acao)classe.newInstance();
+
+Problema: Class.forName("classe").newInstance() é deprecated!!! 
+
+Essa forma de criação de objetos é um Design Pattern chamado Command.
