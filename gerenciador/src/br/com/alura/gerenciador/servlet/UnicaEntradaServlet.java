@@ -13,6 +13,7 @@ import br.com.alura.gerenciador.acoes.AlteraEmpresa;
 import br.com.alura.gerenciador.acoes.ListaEmpresas;
 import br.com.alura.gerenciador.acoes.MostraEmpresa;
 import br.com.alura.gerenciador.acoes.NovaEmpresa;
+import br.com.alura.gerenciador.acoes.NovaEmpresaForm;
 import br.com.alura.gerenciador.acoes.RemoveEmpresa;
 
 /**
@@ -42,12 +43,15 @@ public class UnicaEntradaServlet extends HttpServlet {
 		} else if(paramAcao.equals("NovaEmpresa")) {
 			NovaEmpresa acao = new NovaEmpresa();
 			nome = acao.executa(request, response);
+		} else if(paramAcao.equals("NovaEmpresaForm")) {
+			NovaEmpresaForm acao = new NovaEmpresaForm();
+			nome = acao.executa(request, response);
 		}
 				
 		String[] tipoEEndereco = nome.split(":");
 		
 		if(tipoEEndereco[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(tipoEEndereco[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEEndereco[1]);
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect(tipoEEndereco[1]);

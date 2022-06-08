@@ -56,3 +56,7 @@ Os dois últimos (Servlet e Ações) fazem parte da camada Controller. O servlet
 As Ações tem dois comportamentos: ou definem o JSP que vai ser chamado, ou 
 redireciona a requisição para outra URI na aplicação. Quem vai fazer qualquer
 dos dois comportamentos será a Entrada Única dos servlets.
+
+Preocupação: NUNCA mencionar diretamente qual JSP será carregado. Um meio de 
+evitar que o navegador acesse os JSP diretamente é move-los para a pasta
+WEB-INF (ela nunca fica acessível pelo navegador).
