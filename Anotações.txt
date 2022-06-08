@@ -37,7 +37,9 @@ Problemas de definição do JRE (a classe System não é localizada, por exemplo
 O objetivo foi substituir vários servlets por um único servlet que recebe as
 requisições e as redireciona para classes específicas. (Mas por que criar 
 classes que não estendem servlets, já que o método executa seria o mesmo
-que service, doPost, doGet etc?)
+que service, doPost, doGet etc? Resposta: os métodos dos servlets retornam
+void. Para flexibilizar o JSP que vai ser passado para o RequestDispatcher,
+os métodos de ação poderiam retornar uma String com o JSP que será chamado).
 
 Ao definir os links para os formulários .jsp, não coloque os parâmetros da
 querystring na action do form. Ao invés disso, use campos ocultos com os 
@@ -50,3 +52,7 @@ Até agora há 3 pacotes no curso:
 
 Os dois últimos (Servlet e Ações) fazem parte da camada Controller. O servlet
 único redireciona as requisições para as ações correspondentes.
+
+As Ações tem dois comportamentos: ou definem o JSP que vai ser chamado, ou 
+redireciona a requisição para outra URI na aplicação. Quem vai fazer qualquer
+dos dois comportamentos será a Entrada Única dos servlets.
