@@ -103,3 +103,7 @@ a janela do navegador. Isso dispensa a implementação do logout, por ora.
 Como colocar um usuário na HttpSession (nome do atributo será usuarioLogado):
     HttpSession sessao = request.getSession();
     sessao.setAttribute("usuarioLogado", usuario);
+
+Neste exemplo, condicionamos a exibição da listagem de empresas na ação 
+ListaEmpresas à existência de um usuário logado. Mas fazer isso em todas as
+ações é pouco eficiente.
