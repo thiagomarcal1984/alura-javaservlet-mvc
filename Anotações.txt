@@ -71,3 +71,7 @@ Graças às reflections, podemos instanciar dinamicamente as classes com:
 Problema: Class.forName("classe").newInstance() é deprecated!!! 
 
 Essa forma de criação de objetos é um Design Pattern chamado Command.
+
+O curso menciona o padrão JAAS (Java Authentication and Autorization Service).
+No entanto, o JAAS não é muito usado. Há configurações no web.xml que tem a
+ver com o JAAS (login-config, security-role, security-constraint etc.).

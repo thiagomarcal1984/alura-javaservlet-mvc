@@ -63,4 +63,15 @@ public class Banco {
 		return null;
 	}
 
+	public Usuario existeUsuario(String login, String senha) {
+		Iterator<Usuario> it = listaUsuarios.iterator();
+		while (it.hasNext()) {
+			Usuario usuario = it.next();
+			if (usuario.ehIgual(login, senha)) {
+				return usuario;
+			}
+		}
+		return null;
+	}
+
 }
