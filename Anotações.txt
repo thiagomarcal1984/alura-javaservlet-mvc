@@ -75,3 +75,31 @@ Essa forma de criação de objetos é um Design Pattern chamado Command.
 O curso menciona o padrão JAAS (Java Authentication and Autorization Service).
 No entanto, o JAAS não é muito usado. Há configurações no web.xml que tem a
 ver com o JAAS (login-config, security-role, security-constraint etc.).
+
+Usar o comando a seguir na ação Login não via funcionar:
+		if (usuario != null) {
+			request.setAttribute("usuario", usuario);
+			return "redirect:entrada?acao=ListaEmpresas";
+		} else {
+			return "redirect:entrada?acao=LoginForm";
+		}
+
+Isso porque o atributo "usuario" vive dentro da requisição, que desaparece
+logo que o redirecionamento acontece. O redirecionamento gera uma requisição
+nova, sem o atributo.
+
+O Tomcat faz algumas coisas quando recebe uma requisição:
+    1) Cria um cookie chamado JSESSIONID, que fica armazenado no cliente;
+    2) Cria um objeto HttpSession, que fica armazenado no servidor;
+    3) Insere o JSESSIONID e o HttpSession em um HashMap para consulta futura.
+
+A Expression Language (EL) do JSP busca as variáveis em diferentes escopos.
+Por exemplo, se a tag EL não encontrar a variável usuarioLogado na requisição,
+ela procura a variável na sessão.
+
+Use navegação anônima, para que os cookies criados sejam destruídos ao fechar
+a janela do navegador. Isso dispensa a implementação do logout, por ora.
+
+Como colocar um usuário na HttpSession (nome do atributo será usuarioLogado):
+    HttpSession sessao = request.getSession();
+    sessao.setAttribute("usuarioLogado", usuario);
