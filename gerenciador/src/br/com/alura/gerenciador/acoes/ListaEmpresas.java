@@ -14,18 +14,18 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class ListaEmpresas implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sessao = request.getSession();
+		// long antes = System.currentTimeMillis(); // Início do monitoramento de perfomance, se não houvesse filters.
+
+		System.out.println("Listando empresas.");
 		
-		if (sessao.getAttribute("usuarioLogado") == null) {
-			return "redirect:entrada?acao=LoginForm";
-		} else {
-			System.out.println("Listando empresas.");
-			
-			Banco banco = new Banco();
-			List<Empresa> lista = banco.getEmpresas();
-			
-			request.setAttribute("empresas", lista);
-			return "forward:listaEmpresas.jsp";
-		}
+		Banco banco = new Banco();
+		List<Empresa> lista = banco.getEmpresas();
+		
+		request.setAttribute("empresas", lista);
+
+		// long depois = System.currentTimeMillis(); // Fim do monitoramento de perfomance, se não houvesse filters.	
+		// System.out.println("Tempo de execução: " + (depois - antes));
+
+		return "forward:listaEmpresas.jsp";
 	}
 }

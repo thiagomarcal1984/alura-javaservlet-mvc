@@ -116,3 +116,15 @@ recompilação do controlador de entrada única.
 Para incluir conteúdo externo nas JSP, use a tag <c:import url="path">.
 Seria interessante usar as JSP como templates do Django. Link interessante:
 https://stackoverflow.com/questions/490390/jsp-template-inheritance
+
+Códigos voltados para auditoria, segurança, controle de performance, tratamento
+de erros etc. costumam ser necessários para vários pontos diferentes do 
+código. Não é boa prática copiar esse código para todos os vários pontos: a
+ideia é centralizar o local onde esses códigos "plugáveis" podem ser mudados.
+Também não é bom colocar essas responsabilidades no controlador.
+
+Para isso, usamos os filters - classes semelhantes aos servlets, que podem
+parar a continuação da requisição. Implemente a interface javax.servlet.Filter
+nas classes que vão conter filtros. O método doFilter da interface recebe três
+parâmetros: ServletRequest, ServletResponse e FilterChain. O objeto FilterChain
+contém o método doFilter também, que dá continuidade à requisição. 
