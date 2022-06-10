@@ -11,7 +11,8 @@
 <title>Java Standard Taglib</title>
 </head>
 <body>
-
+	<c:import url="logout-parcial.jsp" />
+	
 	Usuário logado: ${usuarioLogado.login }
 	
 	<br/>

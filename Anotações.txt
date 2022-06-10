@@ -112,3 +112,7 @@ Uma alternativa é fazer a verificação do usuário no controlador de entrada
 única. Nessa situação, você precisa distinguir quais ações são protegidas
 e quais são liberadas para acesso. No entanto, esta alternativa força a 
 recompilação do controlador de entrada única.
+
+Para incluir conteúdo externo nas JSP, use a tag <c:import url="path">.
+Seria interessante usar as JSP como templates do Django. Link interessante:
+https://stackoverflow.com/questions/490390/jsp-template-inheritance
