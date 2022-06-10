@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.acoes.Acao;
 
@@ -22,6 +23,22 @@ public class UnicaEntradaServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramAcao = request.getParameter("acao");
+
+		HttpSession sessao = request.getSession();
+
+		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
+		boolean ehUmaAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm")); 
+		// Sem a variável ehUmaAcaoProtegida, o comando response.sendRedirect entra em
+		// recursividade infinita e a página de login não é alcançada.
+		// Qualquer ação que não seja Login ou LoginForm é protegida.
+		
+		if (ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
+			response.sendRedirect("entrada?acao=LoginForm");
+			return; // Sem este return, o servlet vai tentar executar o sendRedirect 
+					// das próximas linhas e vai lançar a exceção java.lang.IllegalStateException: 
+					// Cannot call sendRedirect() after the response has been committed
+		}
+		
 		
 		String nomeDaClasse = "br.com.alura.gerenciador.acoes." + paramAcao;
 		

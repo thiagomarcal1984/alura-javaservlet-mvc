@@ -107,3 +107,8 @@ Como colocar um usuário na HttpSession (nome do atributo será usuarioLogado):
 Neste exemplo, condicionamos a exibição da listagem de empresas na ação 
 ListaEmpresas à existência de um usuário logado. Mas fazer isso em todas as
 ações é pouco eficiente.
+
+Uma alternativa é fazer a verificação do usuário no controlador de entrada 
+única. Nessa situação, você precisa distinguir quais ações são protegidas
+e quais são liberadas para acesso. No entanto, esta alternativa força a 
+recompilação do controlador de entrada única.
