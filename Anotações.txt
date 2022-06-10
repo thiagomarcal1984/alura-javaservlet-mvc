@@ -28,6 +28,10 @@ Ctrl + Shift + O => Comando no Eclipse para automatizar importação de pacotes.
 Ctrl + M => Maximiza/Restaura a aba atual.
 Ctrl + Shift + R => Janela para buscar algum recurso (arquivo)
 Alt + Shift + Z => Atalho para "Surround with" em um bloco. Ajuda no try/catch.
+    Escreva syso + Ctrl + Espaço, e o Eclipse imprime System.out.println()!
+    Escreva syser + Ctrl + Espaço, e o Eclipse imprime System.err.println()!
+    Escreva systr + Ctrl + Espaço, e o Eclipse imprime 
+        System.out.println("Classe.metodo()")!
 
 Problemas de definição do JRE (a classe System não é localizada, por exemplo):
     Propriedades do Projeto -> Java Build Path -> Aba Libraries. 
@@ -128,3 +132,7 @@ parar a continuação da requisição. Implemente a interface javax.servlet.Filt
 nas classes que vão conter filtros. O método doFilter da interface recebe três
 parâmetros: ServletRequest, ServletResponse e FilterChain. O objeto FilterChain
 contém o método doFilter também, que dá continuidade à requisição. 
+
+Se você precisa que os filtros sigam uma certa ordem, isso só é possível por
+meio de configurações no arquivo web.xml. As anotações não permitem definir a
+ordem de execução dos filtros.
