@@ -14,10 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.acoes.Acao;
 
-/**
- * Servlet implementation class UnicaEntradaServlet
- */
-@WebServlet("/entrada")
+//@WebServlet("/entrada") // Removendo a anotação do filtro.
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

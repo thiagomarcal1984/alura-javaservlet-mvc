@@ -136,3 +136,34 @@ contém o método doFilter também, que dá continuidade à requisição.
 Se você precisa que os filtros sigam uma certa ordem, isso só é possível por
 meio de configurações no arquivo web.xml. As anotações não permitem definir a
 ordem de execução dos filtros.
+
+As tags em web.xml para os filtros são semelhantes às dos servlets:
+    <servlet>
+        <servlet-name>nomeServlet</servlet-name>
+        <servlet-class>pack.do.Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>nomeServlet</servlet-name>
+        <url-pattern>/caminho</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>nomefiltro</filter-name>
+        <filter-class>pack.do.filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>nomefiltro</filter-name>
+        <url-pattern>/caminho</url-pattern>
+    </filter-mapping>
+
+Cuidado com o nome da classe do filtro: se estiver errado, aparece o erro 404.
+
+A ordem dos filtros no web.xml é garantida: se você colocar o filtro 
+autorização primeiro, ele será chamado duas vezes; mas se você colocar o filtro
+de monitoramento primeiro, o de autorização será chamado só uma vez.
+
+Em frameworks, os filters são chamados de interceptadores! Conceitulamente, 
+filtros atuam entre o browser e o controlador único, enquanto interceptadores
+atuam entre o controlador único e as ações.
+    Browser -> Filtro -> Controlador Único -> Ações -> Modelo/Visão.
+    Browser -> Controlador Único -> Interceptadores -> Ações -> Modelo/Visão.
