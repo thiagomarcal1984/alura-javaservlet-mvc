@@ -21,23 +21,30 @@ public class EmpresasService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Empresa> empresas = new Banco().getEmpresas();
-		
-		XStream xstream= new XStream();
-		// O alias muda o nome da tag XML que representa a classe.
-		xstream.alias("empresa", Empresa.class); 
-		String xml = xstream.toXML(empresas);
-		
-		// Define o header Content-Type na resposta. 
-		// Importante para que o cliente saiba o que ele está recebendo.
-		response.setContentType("application/xml");
-		response.getWriter().print(xml);
 
-//		Gson gson = new Gson();
-//		String json = gson.toJson(empresas);
-//		
-//		// Define o header Content-Type na resposta. 
-//		// Importante para que o cliente saiba o que ele está recebendo.
-//		response.setContentType("application/json");
-//		response.getWriter().print(json);
+		String valor = request.getHeader("Accept");
+		
+		if (valor == null) {
+			response.setContentType("application/json");
+			response.getWriter().print("{'message': 'No content'}");
+		} else if (valor.endsWith("xml")) {
+			XStream xstream= new XStream();
+			// O alias muda o nome da tag XML que representa a classe.
+			xstream.alias("empresa", Empresa.class); 
+			String xml = xstream.toXML(empresas);
+			
+			// Define o header Content-Type na resposta. 
+			// Importante para que o cliente saiba o que ele está recebendo.
+			response.setContentType("application/xml");
+			response.getWriter().print(xml);
+		} else if (valor.endsWith("json")) {
+			Gson gson = new Gson();
+			String json = gson.toJson(empresas);
+			
+			// Define o header Content-Type na resposta. 
+			// Importante para que o cliente saiba o que ele está recebendo.
+			response.setContentType("application/json");
+			response.getWriter().print(json);
+		}
 	}
 }

@@ -24,6 +24,7 @@ Comandos no Windows para ver as portas abertas e os programas associados:
                 evita de travar o terminal.
             -o => Exibe a ID de processo proprietário associado a cada conexão.
 
+Ctrl + Shift + C => Comenta/Descomenta linhas no código-fonte.
 Ctrl + Shift + O => Comando no Eclipse para automatizar importação de pacotes.
 Ctrl + M => Maximiza/Restaura a aba atual.
 Ctrl + Shift + R => Janela para buscar algum recurso (arquivo)
@@ -180,3 +181,26 @@ Bibliotecas para trabalhar com webservices em Java:
 
 O próximo passo será flexibilizar a saída (XML ou JSON), dependendo do que o 
 cliente solicitar na requisição.
+
+Uma implementação de cliente HTTP está disponível em https://hc.apache.org/ .
+Procure a versão 4.5.13 do http-components-client (mais completo).
+Há 4 JARs importantes na versão 4.5.13 para que o cliente HTTP funcione:
+    1) httpcore - Base para o cliente;
+    2) http-client - Implementação detalhada de httpcore;
+    3) fluent-hc - Contém a classe Request, que vai ler o webservice;
+    4) commons-logging - Sem o log, a Request não funciona.
+
+-------------------------------------------------------------------------------
+Extraia esses 4 JARs do arquivo compactado e copie para a pasta lib do projeto.
+A pasta lib ficará no mesmo nível da pasta src.
+Depois de colocar os arquivos na pasta lib, use o botão direito sobre os JARs 
+e selecione Build Path -> Add to Build Path.
+
+O projeto Eclipse tem uma propriedade chamada Java Build Path (guia Libraries), 
+em que você define que arquivos .jar serão usados para a compilação do código.
+-------------------------------------------------------------------------------
+
+Algumas bibliotecas usadas para tratar de webservices em Java:
+    * Spring MVC;
+    * JAX-RS;
+    * JAX-WS.
