@@ -167,3 +167,9 @@ filtros atuam entre o browser e o controlador único, enquanto interceptadores
 atuam entre o controlador único e as ações.
     Browser -> Filtro -> Controlador Único -> Ações -> Modelo/Visão.
     Browser -> Controlador Único -> Interceptadores -> Ações -> Modelo/Visão.
+
+Bibliotecas para trabalhar com webservices em Java:
+    JAR da biblioteca GSON: gson-2.8.5.jar.zip
+        https://caelum-online-public.s3.amazonaws.com/1001-servlets-parte2/06/gson-2.8.5.jar.zip
+    JARs da biblioteca XStream: xstream-1.4.10-jars.zip
+        https://caelum-online-public.s3.amazonaws.com/1001-servlets-parte2/06/xstream-1.4.10-jars.zip
