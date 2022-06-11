@@ -173,3 +173,10 @@ Bibliotecas para trabalhar com webservices em Java:
         https://caelum-online-public.s3.amazonaws.com/1001-servlets-parte2/06/gson-2.8.5.jar.zip
     JARs da biblioteca XStream: xstream-1.4.10-jars.zip
         https://caelum-online-public.s3.amazonaws.com/1001-servlets-parte2/06/xstream-1.4.10-jars.zip
+
+    As bibliotecas XStream e XmlPull podem ser obtidas de um pacote grande no
+    site do XStream: https://x-stream.github.io/download.html . Os arquivos do
+    link da Caellum não estão funcionando.
+
+O próximo passo será flexibilizar a saída (XML ou JSON), dependendo do que o 
+cliente solicitar na requisição.
