@@ -204,3 +204,31 @@ Algumas bibliotecas usadas para tratar de webservices em Java:
     * Spring MVC;
     * JAX-RS;
     * JAX-WS.
+
+
+Servidores Java:
+    Servlet Containers ou Servlet Engines (mapeiam URL a servlets ou filtros):
+        * Tomcat
+        * Jetty
+    Application Servers (contém mais bibliotecas que os servlets containers):
+        * Wildfly
+        * Weblogic
+        * Websphere
+
+O Jetty precisa que as classes Filter implementem os métodos init e destroy.
+O Tomcat já definie implementações padrão para os objetos da classe Filter.
+Por isso não foi necessário implementá-los até agora.
+
+Para rodar o Jetty, acesse a pasta do Jetty na linha de comando e execute:
+    D:\jetty-distribution-9.4.46.v20220331>java -jar start.jar
+
+Para implantar um projeto Java Web no Jetty, copie o arquivo .war para a pasta
+webapps dentro do Jetty. 
+
+Use uma versão anterior do Java para rodar o Jetty.
+("Esquece, o Jetty não funciona MESMO.") 
+
+
+Servlets é uma especificação. Especificações só determinam as interfaces, mas
+cada Servlet Container / Application Serveres IMPLEMENTAM essas interfaces.
+Exemplo: a interface Servlet.
